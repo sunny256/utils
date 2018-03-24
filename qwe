@@ -35,7 +35,6 @@ for f in $(git remote | grep -v ^$rem\$); do
 	msg remote rm $f && git remote rm $f || exit 1;
 done &&
 msg dangling && git dangling &&
-msg push $rem && git push $rem &&
 msg push --all $rem && git push --all $rem &&
 msg push --tags $rem && git push --tags $rem &&
 msg FINISHED || msg ERROR
