@@ -1,0 +1,43 @@
+#!/bin/sh
+
+#==============================================================================
+# qwe
+# File ID: 4733a942-2d4b-11e8-aa8a-f74d993421b0
+#
+# Author: Øyvind A. Holm <sunny@sunbase.org>
+# License: GNU General Public License version 2 or later.
+#==============================================================================
+
+progname=qwe
+VERSION=0.0.0
+
+msg() {
+	echo >&2
+	echo "$progname: $*" >&2
+}
+
+rem=$1
+if test -z "$rem"; then
+	msg disk not specified
+	exit 1
+fi
+
+git remote -v
+msg fetch && git fetch $rem &&
+msg fp && git fp &&
+if test "$(git config --get core.bare)" != "true"; then
+	msg nobr && git nobr || exit 1
+fi &&
+msg dangling -D && git dangling -D &&
+msg git allbr -C -f && git allbr -C -f &&
+msg git allbr -a -C && git allbr -a -C &&
+for f in $(git remote | grep -v ^$rem\$); do
+	msg remote rm $f && git remote rm $f || exit 1;
+done &&
+msg dangling && git dangling &&
+msg push $rem && git push $rem &&
+msg push --all $rem && git push --all $rem &&
+msg push --tags $rem && git push --tags $rem &&
+msg FINISHED || msg ERROR
+
+# vim: set ts=8 sw=8 sts=8 noet fo+=w tw=79 fenc=UTF-8 :
