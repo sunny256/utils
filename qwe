@@ -23,8 +23,8 @@ if test -z "$rem"; then
 fi
 
 git remote -v
-msg fetch && git fetch $rem &&
-msg fp && git fp &&
+msg fetch && git fetch --recurse-submodules=no $rem &&
+msg fp && git fp --recurse-submodules=no &&
 if test "$(git config --get core.bare)" != "true"; then
 	msg nobr && git nobr || exit 1
 fi &&
