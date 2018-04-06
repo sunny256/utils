@@ -11,7 +11,7 @@
 #==============================================================================
 
 progname=unp-bundles
-VERSION=0.0.0
+VERSION=0.1.0
 
 opt_help=0
 opt_quiet=0
@@ -55,5 +55,23 @@ Options:
 END
 	exit 0
 fi
+
+for f in "$@"; do
+	echo "$f" | grep -q '\.bundle$' || continue
+	fname="$(basename "$f" .bundle)"
+	if test -e "$fname"; then
+		echo $progname: $fname: Already exists, skipping $f >&2
+		continue
+	fi
+	echo >&2
+	echo $progname: $f >&2
+	git clone "$f" &&
+	(
+		cd "$fname" &&
+		git allbr -a -C -c &&
+		git remote rm origin &&
+		git dangling
+	) || exit 1
+done
 
 # vim: set ts=8 sw=8 sts=8 noet fo+=w tw=79 fenc=UTF-8 :
