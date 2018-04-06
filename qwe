@@ -22,6 +22,7 @@ if test -z "$rem"; then
 	exit 1
 fi
 
+git wait-until-clean -i
 git remote -v
 msg fetch && git fetch --recurse-submodules=no $rem &&
 msg fp && git fp --recurse-submodules=no &&
