@@ -694,6 +694,7 @@ INSERT INTO synced VALUES('uj','Lib/std/perl',NULL,NULL);
 INSERT INTO synced VALUES('unichar','Lib/std/sh','33d454691950cdc2b21ac4d95480ea1f4ec306ff','2016-11-26 10:23:27');
 INSERT INTO synced VALUES('unicode_htmlchart','Lib/std/perl',NULL,NULL);
 INSERT INTO synced VALUES('unik_df','Lib/std/perl',NULL,NULL);
+INSERT INTO synced VALUES('unp-bundles','Lib/std/sh','49434eb842ccda0236840d548703a324171a24e2','2018-04-06 17:36:12');
 INSERT INTO synced VALUES('unz','Lib/std/bash',NULL,NULL);
 INSERT INTO synced VALUES('uoversatt','Lib/std/bash',NULL,NULL);
 INSERT INTO synced VALUES('upd','Lib/std/bash','7d812a8c821d5e09ded9185ca74d5b285c31b464','2017-08-23 16:11:38');
