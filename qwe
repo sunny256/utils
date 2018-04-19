@@ -24,7 +24,8 @@ fi
 
 git wait-until-clean -i
 git remote -v
-msg fetch && git fetch --recurse-submodules=no $rem &&
+msg fetch $rem && git fetch --recurse-submodules=no $rem
+read -p "$progname: Press Enter if OK..." choice
 msg fp && git fp --recurse-submodules=no &&
 if test "$(git config --get core.bare)" != "true"; then
 	msg nobr && git nobr || exit 1
